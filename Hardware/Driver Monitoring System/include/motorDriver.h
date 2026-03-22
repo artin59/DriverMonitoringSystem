@@ -25,7 +25,7 @@ void stop(uint8_t *front, uint8_t *back);
 void forwards(uint8_t *front, uint8_t *back);
 
 //All motors backwards
-void backwarsd(uint8_t *front, uint8_t *back);
+void backwards(uint8_t *front, uint8_t *back);
 
 
 #endif
