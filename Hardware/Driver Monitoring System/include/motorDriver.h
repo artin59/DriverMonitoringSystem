@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include <Arduino.h>
 
+#define PINS 4
+
 /*
  * If pin 1 is LOW, and 2 is HIGH:  motor -> forwards
  * If pin 1 is HIGH, and 2 is LOW:  motor -> backwards
