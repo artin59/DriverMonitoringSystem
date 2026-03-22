@@ -13,6 +13,7 @@
  * If pin 1 is LOW, and 2 is LOW:   motor -> stops
  */
 
+//Array structure: [right 1, right 2, left 1, left 2]
 uint8_t front[4];
 uint8_t back[4];
 
