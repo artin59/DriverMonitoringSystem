@@ -2,6 +2,7 @@
 #define MOTORDRIVER_H
 
 #include <stdint.h>
+#include <Arduino.h>
 
 /*
  * If pin 1 is LOW, and 2 is HIGH:  motor -> forwards
@@ -10,25 +11,21 @@
  * If pin 1 is LOW, and 2 is LOW:   motor -> stops
  */
 
-typedef struct{
-    uint8_t left1;
-    uint8_t left2;
-    uint8_t right1;
-    uint8_t right2;
-} MotorPins;
+uint8_t front[4];
+uint8_t back[4];
 
 
 //Initialize the pins by setting them to output
-void initialize(MotorPins *right, MotorPins *left);
+void initialize(uint8_t *front, uint8_t *back);
 
 //Stops all motors 
-void stop(MotorPins *right, MotorPins *left);
+void stop(uint8_t *front, uint8_t *back);
 
 //All motors forwards
-void forwards(MotorPins *right, MotorPins *left);
+void forwards(uint8_t *front, uint8_t *back);
 
 //All motors backwards
-void backwarsd(MotorPins *right, MotorPins *left);
+void backwarsd(uint8_t *front, uint8_t *back);
 
 
 #endif
