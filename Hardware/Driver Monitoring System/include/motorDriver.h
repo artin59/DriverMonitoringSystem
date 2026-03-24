@@ -14,9 +14,6 @@
  */
 
 //Array structure: [right 1, right 2, left 1, left 2]
-uint8_t front[4];
-uint8_t back[4];
-
 
 //Initialize the pins by setting them to output
 void initialize(uint8_t *front, uint8_t *back);
@@ -29,6 +26,9 @@ void forwards(uint8_t *front, uint8_t *back);
 
 //All motors backwards
 void backwards(uint8_t *front, uint8_t *back);
+
+//Stop and move repeatedly twice
+void stopGo(uint8_t *front, uint8_t *back);
 
 
 #endif

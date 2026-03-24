@@ -1,18 +1,25 @@
 #include <Arduino.h>
+#include "motorDriver.h"
 
-// put function declarations here:
-int myFunction(int, int);
 
+#define FR1 12
+#define FR2 11
+#define FL1 10
+#define FL2 9
+
+#define BR1 8
+#define BR2 7
+#define BL1 6
+#define BL2 5
+
+uint8_t front[4] = {FR1, FR2, FL1, FL2};
+uint8_t back[4] = {BR1, BR2, BL1, BL2};
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+
+  initialize(front, back);
+  Serial.begin(9600);
+
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
 }
