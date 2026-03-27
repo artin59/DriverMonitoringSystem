@@ -1,6 +1,6 @@
 #include "motorDriver.h"
 
-void initialize(uint8_t *front, uint8_t *back){
+void motorInit(uint8_t *front, uint8_t *back){
     //Initialize wheel pins
     for (int i = 0; i < PINS; i++){
         pinMode(front[i], OUTPUT);

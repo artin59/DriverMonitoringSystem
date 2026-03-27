@@ -16,7 +16,7 @@
 //Array structure: [right 1, right 2, left 1, left 2]
 
 //Initialize the pins by setting them to output
-void initialize(uint8_t *front, uint8_t *back);
+void motorInit(uint8_t *front, uint8_t *back);
 
 //Stops all motors 
 void stop(uint8_t *front, uint8_t *back);
