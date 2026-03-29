@@ -1,0 +1,8 @@
+numpy==2.4.4
+opencv-python==4.13.0.92
+pyttsx3==2.99
+dlib==20.0.0
+scipy==1.17.1
+python-can==4.6.1
+python==3.11
+cmake==4.3.0
