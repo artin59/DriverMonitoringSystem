@@ -40,5 +40,11 @@ void setup() {
 
 void loop() {
 
-  
+  if (canIntPending()){
+
+    canProcess();
+
+
+  }
+
 }
