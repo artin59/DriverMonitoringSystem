@@ -9,7 +9,7 @@ import time
 import can
 from scipy.spatial import distance
 
-bus = can.interface.Bus(interface = 'socketcan', channel = '/dev/ttyUSB0', bitrate = 500000)
+bus = can.interface.Bus(interface = 'socketcan', channel = 'can0', bitrate = 500000)
 #bus = can.interface.Bus(interface='virtual', channel='test')
 
 EYES_CLOSED_ID  = 0x064
@@ -27,10 +27,10 @@ def send_alert(eyes_closed: bool):
 
 
 
-camera = cv2.VideoCapture(0) #change index to 1, 2 etc. if camera not working
+camera = cv2.VideoCapture(2) #change index to 1, 2 etc. if camera not working
 
 face_detector = dlib.get_frontal_face_detector()
-dlib_facelandmark = dlib.shape_predictor("G:\\CODING STUFF\\cv\\shape_predictor_68_face_landmarks.dat")
+dlib_facelandmark = dlib.shape_predictor("/home/artin59/Desktop/EECS 3216/DriverMonitoringSystem/cv/shape_predictor_68_face_landmarks.dat")
 
 def Detect_Eye(eye):
     point1 = distance.euclidean(eye[1], eye[5])
@@ -46,6 +46,10 @@ while True:
     null, frame = camera.read()
     gray_scale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_detector(gray_scale)
+    
+    if len(faces) == 0:
+        sleep_timer = None
+        eyes_closed = False
 
     for face in faces:
         face_landmarks = dlib_facelandmark(gray_scale, face)
@@ -107,3 +111,4 @@ while True:
 
 camera.release()
 cv2.destroyAllWindows()
+
