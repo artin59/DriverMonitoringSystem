@@ -11,10 +11,17 @@ void alertInit(uint8_t *front, uint8_t *back){
 
 void alertTrigger(void){
     Serial.println("[ALERT] Driver has fallen ASLEEP!!");
-    stopGo(sFront, sBack);
+    sDriverAsleep = 1;
 }
 
 void alertClear(void){
     Serial.println("Driver AWAKE!");
+    sDriverAsleep = 0;
     forwards(sFront, sBack);
+}
+
+void alertRun(void){
+    if (sDriverAsleep){
+        stopGo(sFront, sBack);
+    }
 }
