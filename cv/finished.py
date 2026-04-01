@@ -9,6 +9,7 @@ import time
 import can
 import json
 import os
+import playsound
 from scipy.spatial import distance
 
 
@@ -43,7 +44,7 @@ def send_alert(eyes_closed: bool):
 
 
 
-camera = cv2.VideoCapture(0) #change index to 1, 2 etc. if camera not working
+camera = cv2.VideoCapture(2) #change index to 1, 2 etc. if camera not working
 
 face_detector = dlib.get_frontal_face_detector()
 dlib_facelandmark = dlib.shape_predictor("/home/artin59/Desktop/EECS 3216/DriverMonitoringSystem/cv/shape_predictor_68_face_landmarks.dat") #change to actual directory
@@ -110,6 +111,7 @@ while True:
             if time_passed >= 1: #x seconds passed for alert to go off
                 cv2.putText(frame, "DROWSINESS DETECTED", (50, 100), cv2.FONT_HERSHEY_PLAIN, 2, (21, 56, 210), 3)
                 cv2.putText(frame, "Alert!!!! DRIVER ASLEEP", (50, 450), cv2.FONT_HERSHEY_PLAIN, 2, (21, 56, 212), 3)
+                playsound("/home/artin59/Desktop/EECS 3216/DriverMonitoringSystem/cv/wakeup.mp3")
                 eyes_closed = True
         else:
             sleep_timer = None
