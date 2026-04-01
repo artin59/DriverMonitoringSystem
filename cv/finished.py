@@ -9,13 +9,17 @@ import time
 import can
 import json
 import os
-#import playsound
+import pygame
 from scipy.spatial import distance
 
 
 #change for testing
 #bus = can.interface.Bus(interface = 'socketcan', channel = 'can0', bitrate = 500000)
 bus = can.interface.Bus(interface='virtual', channel='test')
+
+#mixer for alert sound
+pygame.mixer.init(frequency=44100, size=-16, channels=1, buffer=512)
+
 
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -32,6 +36,16 @@ else:
 EYES_CLOSED_ID  = 0x064
 EYES_CLOSED_MSG = can.Message(arbitration_id=EYES_CLOSED_ID, data=[0x01], is_extended_id=False)
 EYES_OPEN_MSG   = can.Message(arbitration_id=EYES_CLOSED_ID, data=[0x00], is_extended_id=False)
+
+#beep sound to call
+def make_beep():
+    freq, duration, sample_rate = 1000, 1.0, 44100
+    t = np.linspace(0, duration, int(sample_rate * duration), False)
+    wave = (np.sin(2 * np.pi * freq * t) * 32767).astype(np.int16)
+    wave = np.column_stack([wave, wave])  # stereo
+    sound = pygame.sndarray.make_sound(wave)
+    return sound
+alert_sound = make_beep()
 
 
 def send_alert(eyes_closed: bool):
@@ -111,10 +125,12 @@ while True:
             if time_passed >= 1: #x seconds passed for alert to go off
                 cv2.putText(frame, "DROWSINESS DETECTED", (50, 100), cv2.FONT_HERSHEY_PLAIN, 2, (21, 56, 210), 3)
                 cv2.putText(frame, "Alert!!!! DRIVER ASLEEP", (50, 450), cv2.FONT_HERSHEY_PLAIN, 2, (21, 56, 212), 3)
-                #playsound("/home/artin59/Desktop/EECS 3216/DriverMonitoringSystem/cv/wakeup.mp3")
+                if not pygame.mixer.get_busy():
+                    alert_sound.play(-1)
                 eyes_closed = True
         else:
             sleep_timer = None
+            alert_sound.stop()
             eyes_closed = False
         
         if eyes_closed != previous_alert:
