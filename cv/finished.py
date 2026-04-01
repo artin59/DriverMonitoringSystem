@@ -10,6 +10,7 @@ import can
 import json
 import os
 import pygame
+import numpy as np
 from scipy.spatial import distance
 
 
