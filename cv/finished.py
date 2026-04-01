@@ -1,10 +1,9 @@
-#pip install numpy, opencv-python, pyttsx3, dlib, scipy, python-can
+#pip install numpy, opencv-python, pyttsx3, dlib, scipy, python-can, numpy, pygame
 #python 3.11
 #pyttsx3 future sound implementation
 
 import cv2
 import dlib
-import pyttsx3
 import time
 import can
 import json
