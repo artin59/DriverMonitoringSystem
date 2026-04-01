@@ -9,7 +9,7 @@ import time
 import can
 import json
 import os
-import playsound
+#import playsound
 from scipy.spatial import distance
 
 
@@ -111,7 +111,7 @@ while True:
             if time_passed >= 1: #x seconds passed for alert to go off
                 cv2.putText(frame, "DROWSINESS DETECTED", (50, 100), cv2.FONT_HERSHEY_PLAIN, 2, (21, 56, 210), 3)
                 cv2.putText(frame, "Alert!!!! DRIVER ASLEEP", (50, 450), cv2.FONT_HERSHEY_PLAIN, 2, (21, 56, 212), 3)
-                playsound("/home/artin59/Desktop/EECS 3216/DriverMonitoringSystem/cv/wakeup.mp3")
+                #playsound("/home/artin59/Desktop/EECS 3216/DriverMonitoringSystem/cv/wakeup.mp3")
                 eyes_closed = True
         else:
             sleep_timer = None
