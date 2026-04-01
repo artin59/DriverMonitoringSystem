@@ -19,7 +19,7 @@ from scipy.spatial import distance
 bus = can.interface.Bus(interface='virtual', channel='test')
 
 #mixer for alert sound
-pygame.mixer.init(frequency=44100, size=-16, channels=1, buffer=512)
+pygame.mixer.init(frequency=44100, size=-16, channels=2, buffer=512)
 
 
 
