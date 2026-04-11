@@ -3,9 +3,10 @@
 
 
 #define CAN_BITRATE CAN_500KBPS
-#define CAN_CLOCK MCP_8MHZ
+#define CAN_CLOCK MCP_8MHZ //Hardware specific based on the MCP2515
 
-#define DRIVER_ALERT_ID 0X064
+#define DRIVER_ALERT_ID 0X064 //CAN ID
+//CAN Paylod
 #define EYES_CLOSED 0x01
 #define EYES_OPEN 0X00
 

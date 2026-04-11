@@ -27,7 +27,7 @@ void forwards(uint8_t *front, uint8_t *back);
 //All motors backwards
 void backwards(uint8_t *front, uint8_t *back);
 
-//Stop and move repeatedly twice
+//Stop and move repeatedly
 void stopGo(uint8_t *front, uint8_t *back);
 
 

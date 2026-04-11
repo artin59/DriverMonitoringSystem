@@ -13,6 +13,7 @@ void alertTrigger(void);
 //Called by can_handler when payload == 0x00 (eyes open)
 void alertClear(void);
 
+//Runs when the driver has fallen asleep
 void alertRun(void);
 
 #endif
